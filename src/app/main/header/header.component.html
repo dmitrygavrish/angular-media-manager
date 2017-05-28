@@ -1,0 +1,17 @@
+<div class="header-wrapper">
+  <div class="app-logo"
+       (click)="onMainLogoClick()">
+    <div class="app-sign">Media Manager</div>
+  </div>
+  <div class="about-link"
+       [routerLinkActive]="['active']">
+    <a class="about-sign"
+       [routerLink]="['about']">About</a>
+  </div>
+  <div class="logout">
+    <div class="logout-btn">
+      <div class="logout-icon"></div>
+      <div class="logout-sign">Logout</div>
+    </div>
+  </div>
+</div>

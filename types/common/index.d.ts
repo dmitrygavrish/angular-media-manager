@@ -1,0 +1,3 @@
+type appState = {
+  isLoggedIn: boolean
+};

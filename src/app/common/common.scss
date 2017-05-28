@@ -1,0 +1,20 @@
+// modifiers
+$lighten_amount: 25%;
+$darken_amount: 40%;
+// primary, background
+$primary: #4762e7;
+$primary_light: lighten($primary, $lighten_amount);
+$primary_dark: darken($primary, $darken_amount);
+$warn: adjust-hue($primary, 180deg);
+$warn_light: lighten($warn, $lighten_amount);
+$danger: adjust_hue($primary, 120deg);
+$danger_light: lighten($danger, $lighten_amount);
+$success: adjust_hue($primary, -120deg);
+$success_light: lighten($success, $lighten_amount);
+// font, borders & other
+$dark: #5f5f5f;
+$light: #ffffff;
+// secondary
+$secondary: #5edee1;
+$secondary_light: lighten($secondary, $lighten_amount);
+$secondary_dark: darken($secondary, $darken_amount);
