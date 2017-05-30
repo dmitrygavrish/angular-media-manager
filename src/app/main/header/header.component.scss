@@ -13,10 +13,10 @@
   .app-logo {
     margin: 1rem 1rem 0;
     padding: .5rem;
-    border-radius: .5rem;
+    border-radius: .25rem;
     background-color: $primary;
-    box-shadow: 0 2px 1px $light, 0 3px 2px $dark;
     cursor: pointer;
+    @include std-shadow();
 
     .app-sign {
       font-size: 2rem;
@@ -32,14 +32,14 @@
     .about-sign {
       font-size: 2rem;
       color: $dark;
-      text-decoration: underline;
-      text-decoration-color: transparent;
-      transition: text-decoration-color .2s;
+      text-decoration: none;
+      transition: border-color .2s;
+      border-bottom: .25rem solid transparent;
     }
 
     &.active, &:hover {
       .about-sign {
-        text-decoration-color: $primary;
+        border-color: $primary;
       }
     }
   }
@@ -58,6 +58,15 @@
         font-size: 1rem;
         font-weight: bold;
         color: $dark;
+        text-decoration: none;
+        transition: border-color .2s;
+        border-bottom: .25rem solid transparent;
+      }
+
+      &:hover {
+        .logout-sign {
+          border-color: $primary;
+        }
       }
     }
   }

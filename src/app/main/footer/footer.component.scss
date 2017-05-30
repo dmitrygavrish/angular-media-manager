@@ -1,2 +1,12 @@
 @import '../../common/common';
 
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .footer-sign {
+    text-align: center;
+    color: $dark;
+    font-size: .875rem;
+  }
+}

@@ -13,6 +13,7 @@ import {RegisterComponent} from './main/register/register.component';
 import {DeskComponent} from './main/desk/desk.component';
 import {AboutComponent} from './main/about/about.component';
 import {AuthService} from './common/services/auth.service';
+import {AuthGuard} from './common/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {AuthService} from './common/services/auth.service';
     RouterModule.forRoot(routes)
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -8,19 +8,24 @@ import {AuthService} from '../../common/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public logoutBtnVisible: boolean = false;
+  
   public constructor(private router: Router,
-                     private service: AuthService) {
-    this.service.appState$
-      .subscribe((v: any) => {
-        debugger;
-      });
+                     private authService: AuthService) {
+    this.authService.authState$.subscribe((authState: AuthState) => {
+      this.logoutBtnVisible = authState.isLoggedIn;
+    });
   }
   
   public ngOnInit(): void {
+    this.logoutBtnVisible = this.authService.isLoggedIn;
   }
   
-  public onMainLogoClick(): void {
-    this.service.test();
-    // this.router.navigate
+  public onMainLogoPress(): void {
+    this.router.navigate(['']);
+  }
+  
+  public onLogoutBtnPress(): void {
+    this.authService.updateAuth({isLoggedIn: false});
   }
 }

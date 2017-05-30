@@ -4,22 +4,27 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  private _appState$$: Subject<any> = new Subject();
+  private _authState: AuthState = {isLoggedIn: false};
+  private _authState$$: Subject<AuthState> = new Subject();
   
   public constructor() {
   }
   
+  public updateAuth(authState: AuthState): void {
+    // allow passing incomplete AuthState objects by rewriting only those
+    // stored _authState properties that were passed in authState argument
+    for (const key in authState) {
+      this._authState[key] = authState[key];
+    }
+    
+    this._authState$$.next(authState);
+  }
+  
   public get isLoggedIn(): boolean {
-    return true;
+    return this._authState.isLoggedIn;
   }
   
-  public test(): void {
-    this._appState$$.next({
-      isLoggedId: true
-    });
-  }
-  
-  public get appState$(): Observable<any> {
-    return this._appState$$.asObservable();
+  public get authState$(): Observable<AuthState> {
+    return this._authState$$.asObservable();
   }
 }

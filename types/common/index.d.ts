@@ -1,3 +1,3 @@
-type appState = {
+type AuthState = {
   isLoggedIn: boolean
 };

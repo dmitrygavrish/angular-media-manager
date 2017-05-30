@@ -18,3 +18,7 @@ $light: #ffffff;
 $secondary: #5edee1;
 $secondary_light: lighten($secondary, $lighten_amount);
 $secondary_dark: darken($secondary, $darken_amount);
+
+@mixin std-shadow() {
+  box-shadow: 0 2px 1px $light, 0 3px 2px $dark, 0 -1px 3px -2px $dark;
+}
