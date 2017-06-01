@@ -1,0 +1,72 @@
+@import '../../../common/common';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.master-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .master-tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 1rem;
+
+    .search-tab, .fav-tab {
+      position: relative;
+      width: 3rem;
+      height: 2.25rem;
+      border-radius: .5rem .5rem 0 0;
+      background-color: $secondary;
+      border: 2px solid $secondary;
+      border-bottom: none;
+      cursor: pointer;
+      transition: background-color .2s;
+
+      &:hover {
+        background-color: $secondary_light;
+      }
+
+      i {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 2rem;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 1.5rem;
+        text-shadow: 1px 1px 0 $dark;
+      }
+    }
+
+    .search-tab {
+      i {
+        color: $light;
+      }
+    }
+
+    .fav-tab {
+      margin-left: .25rem;
+
+      i {
+        color: $primary_dark;
+      }
+    }
+  }
+
+  .master-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    border: 1px solid red;
+    width: 100%;
+  }
+}

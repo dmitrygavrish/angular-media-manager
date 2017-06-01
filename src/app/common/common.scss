@@ -20,5 +20,16 @@ $secondary_light: lighten($secondary, $lighten_amount);
 $secondary_dark: darken($secondary, $darken_amount);
 
 @mixin std-shadow() {
-  box-shadow: 0 2px 1px $light, 0 3px 2px $dark, 0 -1px 3px -2px $dark;
+  box-shadow:
+    0 2px 1px $light,
+    0 3px 2px $dark,
+    0 -1px 3px -2px $dark;
+}
+@mixin abs-center() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }

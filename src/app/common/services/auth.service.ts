@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  private _authState: AuthState = {isLoggedIn: false};
+  private _authState: AuthState = {isLoggedIn: true};
   private _authState$$: Subject<AuthState> = new Subject();
   
   public constructor() {

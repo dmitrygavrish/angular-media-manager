@@ -14,6 +14,10 @@ import {DeskComponent} from './main/desk/desk.component';
 import {AboutComponent} from './main/about/about.component';
 import {AuthService} from './common/services/auth.service';
 import {AuthGuard} from './common/guards/auth.guard';
+import { MasterComponent } from './main/desk/master/master.component';
+import { DetailComponent } from './main/desk/detail/detail.component';
+import { SearchComponent } from './main/desk/master/search/search.component';
+import { FavoriteComponent } from './main/desk/master/favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import {AuthGuard} from './common/guards/auth.guard';
     LoginComponent,
     RegisterComponent,
     DeskComponent,
-    AboutComponent
+    AboutComponent,
+    MasterComponent,
+    DetailComponent,
+    SearchComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
