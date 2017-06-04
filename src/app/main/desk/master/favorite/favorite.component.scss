@@ -1,0 +1,36 @@
+@import '../../../../common/common';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.favorite-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+
+  .favorite-search, .favorite-categories, .favorite-types {
+    width: 90%;
+  }
+
+  .favorite-search {
+    margin-top: .5rem;
+  }
+
+  .favorite-types {
+    margin-top: 1rem;
+  }
+
+  .add-favorite {
+    margin-top: 1rem;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+}

@@ -3,12 +3,16 @@
   <form #loginForm="ngForm"
         novalidate
         (ngSubmit)="onSubmit()">
-    <button type="submit"
+    <button md-raised-button
+            color="primary"
+            type="submit"
             class="login-submit">
       Login
     </button>
-    <button class="login-register"
-            (click)="onRegisterBtnPress()">
+    <button (click)="onRegisterBtnPress()"
+            md-button
+            color="primary"
+            class="login-register">
       Sign up
     </button>
   </form>

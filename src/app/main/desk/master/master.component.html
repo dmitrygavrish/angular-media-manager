@@ -1,16 +1,16 @@
-<div class="master-wrapper">
-  <div class="master-tabs">
-    <div (click)="onSearchTabPress()"
-         class="search-tab">
+<md-tab-group>
+  <md-tab>
+    <ng-template md-tab-label>
       <i class="fa fa-search" aria-hidden="true"></i>
-    </div>
-    <div (click)="onFavTabPress()"
-         class="fav-tab">
+      <span class="tab-label">Search</span>
+    </ng-template>
+    <mm-search></mm-search>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
       <i class="fa fa-star" aria-hidden="true"></i>
-    </div>
-  </div>
-  <div class="master-content">
-    <mm-search *ngIf="currentContent === 'search'"></mm-search>
-    <mm-favorite *ngIf="currentContent === 'favorite'"></mm-favorite>
-  </div>
-</div>
+      <span class="tab-label">Favorites</span>
+    </ng-template>
+    <mm-favorite></mm-favorite>
+  </md-tab>
+</md-tab-group>

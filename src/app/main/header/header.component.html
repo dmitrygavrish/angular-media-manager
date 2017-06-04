@@ -1,4 +1,5 @@
-<div class="header-wrapper">
+<md-toolbar class="header-wrapper"
+            color="primary">
   <div class="app-logo"
        (click)="onMainLogoPress()">
     <div class="app-sign">Media Manager</div>
@@ -8,12 +9,10 @@
     <a class="about-sign"
        [routerLink]="['about']">About</a>
   </div>
-  <div class="logout">
-    <div *ngIf="logoutBtnVisible"
-         (click)="onLogoutBtnPress()"
-         class="logout-btn">
-      <div class="logout-icon"></div>
-      <a class="logout-sign">Logout</a>
-    </div>
-  </div>
-</div>
+  <span class="header-spacer"></span>
+  <button *ngIf="logoutBtnVisible"
+          (click)="onLogoutBtnPress()"
+          md-button>
+    Logout
+  </button>
+</md-toolbar>

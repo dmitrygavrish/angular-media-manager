@@ -2,6 +2,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'All',
     key: 'all',
+    icon: 'fa-cubes',
     requestParameters: {
       main: 'all',
       searchAttributes: []
@@ -10,6 +11,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'Music',
     key: 'music',
+    icon: 'fa-music',
     requestParameters: {
       main: 'music',
       searchAttributes: [
@@ -27,6 +29,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'Movies',
     key: 'movies',
+    icon: 'fa-film',
     requestParameters: {
       main: 'movie',
       searchAttributes: [
@@ -44,6 +47,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'Music videos',
     key: 'musicVideos',
+    icon: 'fa-video-camera',
     requestParameters: {
       main: 'musicVideo',
       searchAttributes: [
@@ -61,6 +65,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'Podcasts',
     key: 'podcasts',
+    icon: 'fa-podcast',
     requestParameters: {
       main: 'podcast',
       searchAttributes: [
@@ -82,6 +87,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'Audiobooks',
     key: 'audiobooks',
+    icon: 'fa-headphones',
     requestParameters: {
       main: 'audiobook',
       searchAttributes: [
@@ -99,6 +105,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'Short films',
     key: 'shortFilms',
+    icon: 'fa-file-video-o',
     requestParameters: {
       main: 'shortFilm',
       searchAttributes: [
@@ -116,6 +123,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'TV shows',
     key: 'tvShows',
+    icon: 'fa-television',
     requestParameters: {
       main: 'tvShow',
       searchAttributes: [
@@ -137,6 +145,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'Software',
     key: 'software',
+    icon: 'fa-cogs',
     requestParameters: {
       main: 'software',
       searchAttributes: []
@@ -145,6 +154,7 @@ export const searchItems: SearchItem[] = [
   {
     name: 'E-books',
     key: 'ebooks',
+    icon: 'fa-book',
     requestParameters: {
       main: 'ebook',
       searchAttributes: []

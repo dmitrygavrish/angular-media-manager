@@ -1,63 +1,56 @@
 @import '../../common/common';
 
 .header-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+
+  .header-spacer {
+    flex: 1 1 auto;
+  }
 
   .app-logo, .about-link {
     flex: 0 0 auto;
   }
 
   .app-logo {
-    margin: 1rem 1rem 0;
-    padding: .5rem;
-    border-radius: .25rem;
-    background-color: $primary;
     cursor: pointer;
-    @include std-shadow();
 
     .app-sign {
       font-size: 2rem;
       font-weight: bold;
-      color: $light;
     }
   }
 
   .about-link {
-    margin: 1rem 1rem 0 0;
-    padding: .5rem;
+    margin-left: 2rem;
 
     .about-sign {
       font-size: 2rem;
-      color: $dark;
       text-decoration: none;
       transition: border-color .2s;
       border-bottom: .25rem solid transparent;
+
+      &:active {
+        color: inherit;
+      }
     }
 
     &.active, &:hover {
       .about-sign {
-        border-color: $primary;
+        //border-color: #fff;
       }
     }
   }
 
   .logout {
     flex: 1 1 auto;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 
     .logout-btn {
-      position: absolute;
-      top: 2rem;
-      right: 0;
       cursor: pointer;
 
       .logout-sign {
         font-size: 1rem;
-        font-weight: bold;
-        color: $dark;
         text-decoration: none;
         transition: border-color .2s;
         border-bottom: .25rem solid transparent;
@@ -65,7 +58,7 @@
 
       &:hover {
         .logout-sign {
-          border-color: $primary;
+          //border-color: #fff;
         }
       }
     }

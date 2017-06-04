@@ -1,3 +1,31 @@
-<p>
-  favorite works!
-</p>
+<div class="favorite-wrapper">
+  <button (click)="onAddFavoritePress()"
+          md-fab
+          color="accent"
+          class="add-favorite">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+  <md-input-container class="favorite-search">
+    <input mdInput placeholder="Search favorites">
+  </md-input-container>
+  <md-select (change)="onCategorySelectionChange($event.value)"
+             [multiple]="true"
+             class="favorite-categories"
+             name="category"
+             placeholder="Show category">
+    <md-option *ngFor="let sItem of searchItems"
+               [value]="sItem.key">
+      {{sItem.name}}
+    </md-option>
+  </md-select>
+  <md-select (change)="onTypeSelectionChange($event.value)"
+             class="favorite-types"
+             name="type"
+             placeholder="Show type">
+    <md-option *ngFor="let fItem of favoriteItems"
+               [value]="fItem.key">
+      {{fItem.name}}
+    </md-option>
+  </md-select>
+  <mm-favorite-list></mm-favorite-list>
+</div>
