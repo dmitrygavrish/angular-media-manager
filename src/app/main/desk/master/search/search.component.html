@@ -1,12 +1,8 @@
 <md-list>
   <md-list-item *ngFor="let item of searchItems"
+                (click)="onSearchItemPress(item)"
                 class="search-menu-item">
-    <button (click)="onSearchItemPress(item)"
-            md-button
-            color="primary"
-            class="search-menu-button">
-      <i [ngClass]="[item.icon, 'fa']" aria-hidden="true"></i>
-      <span class="item-title">{{item.name}}</span>
-    </button>
+    <i [ngClass]="[item.icon, 'fa']" aria-hidden="true"></i>
+    <span class="item-title">{{item.name}}</span>
   </md-list-item>
 </md-list>

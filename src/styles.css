@@ -28,3 +28,7 @@ app-root {
 .mat-select-placeholder.mat-floating-placeholder {
   top: -18px !important;
 }
+/*stretch tab content to full size to avoid scrollbar artifact during tab switch*/
+.mat-tab-group, .mat-tab-body-wrapper {
+  flex-grow: 1;
+}

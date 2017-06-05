@@ -19,7 +19,12 @@ import {MasterComponent} from './main/desk/master/master.component';
 import {DetailComponent} from './main/desk/detail/detail.component';
 import {SearchComponent} from './main/desk/master/search/search.component';
 import {FavoriteComponent} from './main/desk/master/favorite/favorite.component';
-import { FavoriteListComponent } from './main/desk/master/favorite/favorite-list/favorite-list.component';
+import {FavoriteListComponent} from './main/desk/master/favorite/favorite-list/favorite-list.component';
+import {LocalService} from './common/services/local.service';
+import {HttpService} from './common/services/http.service';
+import {SearchService} from './common/services/search.service';
+import {FavoritesService} from './common/services/favorites.service';
+import {BASE_URL, BASE_URL_TOKEN} from '../config';
 
 @NgModule({
   declarations: [
@@ -44,8 +49,16 @@ import { FavoriteListComponent } from './main/desk/master/favorite/favorite-list
     RouterModule.forRoot(routes)
   ],
   providers: [
+    {
+      provide: BASE_URL_TOKEN,
+      useValue: BASE_URL
+    },
     AuthService,
-    AuthGuard
+    AuthGuard,
+    HttpService,
+    LocalService,
+    SearchService,
+    FavoritesService
   ],
   bootstrap: [AppComponent]
 })

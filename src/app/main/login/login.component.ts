@@ -21,7 +21,7 @@ export class LoginComponent {
   public onSubmit(): void {
     if (this.loginForm.valid) {
       this.loginForm.reset();
-      this.authService.updateAuth({isLoggedIn: true});
+      this.authService.validateLogin();
     }
   }
   

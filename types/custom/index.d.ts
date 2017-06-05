@@ -1,1 +1,4 @@
-type env = { production: boolean };
+type env = {
+  production: boolean,
+  baseAPIUrl: string
+};

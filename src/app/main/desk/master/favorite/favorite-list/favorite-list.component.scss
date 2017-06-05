@@ -1,5 +1,11 @@
 @import '../../../../../common/common';
 
+:host {
+  height: 100%;
+  overflow-y: scroll;
+  margin-bottom: 1.5rem;
+}
+
 .favorite-list {
 
   .favorite-list-item {
@@ -19,22 +25,21 @@
       width: 1.5rem;
       font-size: .875rem;
       align-self: flex-start;
-      color: $foreground;
+      color: $primary;
     }
 
     .favorite-name {
       flex: 1 1 auto;
-      color: $primary;
-      font-weight: bold;
+      color: $foreground;
       font-size: .875rem;
     }
 
-    .item-edit-btn {
-      margin-right: .25rem;
-    }
-
     .item-edit-btn, .item-delete-btn {
+      margin-left: .25rem;
       transform: scale(0.9);
+      padding: 0;
+      min-width: 0;
+      width: 2rem;
     }
   }
 }

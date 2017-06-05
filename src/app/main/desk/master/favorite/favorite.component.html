@@ -1,10 +1,4 @@
 <div class="favorite-wrapper">
-  <button (click)="onAddFavoritePress()"
-          md-fab
-          color="accent"
-          class="add-favorite">
-    <i class="fa fa-plus" aria-hidden="true"></i>
-  </button>
   <md-input-container class="favorite-search">
     <input mdInput placeholder="Search favorites">
   </md-input-container>
@@ -28,4 +22,12 @@
     </md-option>
   </md-select>
   <mm-favorite-list></mm-favorite-list>
+  <div class="add-favorite-wrapper">
+    <button (click)="onAddFavoritePress()"
+            md-fab
+            color="accent"
+            class="add-favorite">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+  </div>
 </div>
