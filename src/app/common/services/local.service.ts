@@ -9,7 +9,7 @@ export class LocalService {
   }
 
   public processLogin(): Observable<boolean> {
-    // TODO implement localStorage
+    
     return Observable.of(true);
   }
 
