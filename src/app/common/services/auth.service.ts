@@ -11,10 +11,11 @@ export class AuthService {
   public constructor(private _mainService: LocalService) {
   }
 
-  public validateLogin(): void {
-    this._mainService.processLogin().subscribe((isValid: boolean) => {
-      this.updateAuth({isLoggedIn: isValid});
-    });
+  public validateLogin(loginData: AuthLoginData): void {
+    this._mainService.processLogin(loginData)
+      .subscribe((authState: AuthState) => {
+        this.updateAuth(authState);
+      });
   }
 
   public updateAuth(authState: AuthState): void {

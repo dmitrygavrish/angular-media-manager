@@ -1,3 +1,9 @@
 type AuthState = {
-  isLoggedIn: boolean
+  isLoggedIn: boolean,
+  userLogin?: string
+};
+
+type AuthLoginData = {
+  login: string,
+  password: string
 };
