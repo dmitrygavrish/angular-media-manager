@@ -1,18 +1,35 @@
-<div #formContainer
-     class="login-container">
+<div class="login-container">
   <form #loginForm="ngForm"
         novalidate
-        (ngSubmit)="onSubmit()">
+        (ngSubmit)="onSubmit(loginForm.value)">
+    <md-input-container>
+      <input mdInput
+             ngModel
+             name="login"
+             placeholder="Login"
+             required
+             minlength="4">
+    </md-input-container>
+    <md-input-container>
+      <input mdInput
+             ngModel
+             name="password"
+             placeholder="Password"
+             required
+             minlength="4">
+    </md-input-container>
     <button md-raised-button
             color="primary"
             type="submit"
-            class="login-submit">
+            class="login-submit"
+            [disabled]="isLoginProceeding || loginForm.invalid">
       Login
     </button>
     <button (click)="onRegisterBtnPress()"
             md-button
             color="primary"
-            class="login-register">
+            class="login-register"
+            [disabled]="isLoginProceeding">
       Sign up
     </button>
   </form>

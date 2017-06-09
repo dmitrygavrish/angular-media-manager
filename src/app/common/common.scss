@@ -3,3 +3,23 @@ $accent: #ffd740;
 $foreground: #7a7a7a;
 $background: #ffffff;
 $primary_light: #ebe6f6;
+$mask: #3f3f3f;
+
+@mixin abs-center() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+@mixin modal($width, $height) {
+  @include abs-center();
+  width: $width;
+  height: $height;
+  background-color: $background;
+  border-radius: .25rem;
+  box-shadow: 0 0 5px 1px $mask;
+  padding: 1rem;
+}

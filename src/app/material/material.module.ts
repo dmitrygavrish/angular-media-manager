@@ -6,6 +6,7 @@ import {
   MdInputModule,
   MdListModule,
   MdSelectModule,
+  MdSnackBarModule,
   MdTabsModule,
   MdToolbarModule
 } from '@angular/material';
@@ -19,7 +20,8 @@ import {
     MdTabsModule,
     MdListModule,
     MdInputModule,
-    MdSelectModule
+    MdSelectModule,
+    MdSnackBarModule
   ],
   exports: [
     MdButtonModule,
@@ -27,7 +29,8 @@ import {
     MdTabsModule,
     MdListModule,
     MdInputModule,
-    MdSelectModule
+    MdSelectModule,
+    MdSnackBarModule
   ],
   declarations: []
 })

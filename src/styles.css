@@ -32,3 +32,7 @@ app-root {
 .mat-tab-group, .mat-tab-body-wrapper {
   flex-grow: 1;
 }
+/*remove `*` symbol from input placeholder (looks bad)*/
+.mat-placeholder-required {
+  display: none;
+}

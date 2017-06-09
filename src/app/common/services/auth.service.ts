@@ -1,19 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 import {LocalService} from './local.service';
 
 @Injectable()
 export class AuthService {
-  private _authState: AuthState = {isLoggedIn: true};
+  private _authState: AuthState = {isLoggedIn: false};
   private _authState$$: Subject<AuthState> = new Subject();
 
   public constructor(private _mainService: LocalService) {
   }
 
-  public validateLogin(loginData: AuthLoginData): void {
-    this._mainService.processLogin(loginData)
-      .subscribe((authState: AuthState) => {
+  public validateLogin(loginData: AuthLoginData): Observable<AuthState> {
+    return this._mainService.processLogin(loginData)
+      .do((authState: AuthState) => {
         this.updateAuth(authState);
       });
   }

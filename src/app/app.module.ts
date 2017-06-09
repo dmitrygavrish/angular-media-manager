@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from './material/material.module';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {routes} from './common/routes';
@@ -25,6 +25,8 @@ import {HttpService} from './common/services/http.service';
 import {SearchService} from './common/services/search.service';
 import {FavoritesService} from './common/services/favorites.service';
 import {BASE_URL, BASE_URL_TOKEN} from '../config';
+import {ModalComponent} from './common/components/modal/modal.component';
+import {ModalService} from './common/components/modal/modal.service';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,14 @@ import {BASE_URL, BASE_URL_TOKEN} from '../config';
     DetailComponent,
     SearchComponent,
     FavoriteComponent,
-    FavoriteListComponent
+    FavoriteListComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes)
   ],
@@ -58,8 +62,10 @@ import {BASE_URL, BASE_URL_TOKEN} from '../config';
     HttpService,
     LocalService,
     SearchService,
-    FavoritesService
+    FavoritesService,
+    ModalService
   ],
+  entryComponents: [RegisterComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
