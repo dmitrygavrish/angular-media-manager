@@ -17,6 +17,7 @@
   align-items: center;
   cursor: pointer;
   overflow: hidden;
+  transition: background-color .2s;
 
   &:hover {
     background-color: $primary_light;
@@ -29,11 +30,37 @@
     margin-left: 1rem;
     color: $primary;
     font-size: 1rem;
+    transition: color .2s;
   }
 
   .item-title {
     color: $foreground;
     font-size: .875rem;
+    transition: color .2s;
+  }
+
+  &.active {
+    background-color: $primary;
+
+    i {
+      color: $primary_light;
+    }
+
+    .item-title {
+      color: $background;
+    }
+
+    &:hover {
+      background-color: $primary;
+
+      i {
+        color: $primary_light;
+      }
+
+      .item-title {
+        color: $background;
+      }
+    }
   }
 }
 

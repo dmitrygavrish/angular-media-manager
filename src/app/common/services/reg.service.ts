@@ -11,4 +11,12 @@ export class RegService {
   public validateRegistration(regData: AuthRegData): Observable<boolean> {
     return this._mainService.processRegistration(regData);
   }
+  
+  public validateLogin(login: string): Observable<boolean> {
+    return this._mainService.confirmUserData('login', login);
+  }
+  
+  public validateEmail(email: string): Observable<boolean> {
+    return this._mainService.confirmUserData('email', email);
+  }
 }

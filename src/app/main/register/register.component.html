@@ -1,15 +1,16 @@
+<mm-close-button></mm-close-button>
 <div class="register-container">
   <form [formGroup]="formModel"
         novalidate
         (ngSubmit)="onSubmit(formModel.value)">
     <div formGroupName="nameGroup"
          class="form-box">
-      <md-input-container>
+      <md-input-container class="form-field small">
         <input mdInput
                formControlName="firstName"
                placeholder="First name">
       </md-input-container>
-      <md-input-container>
+      <md-input-container class="form-field small">
         <input mdInput
                formControlName="secondName"
                placeholder="Second name">
@@ -17,30 +18,42 @@
     </div>
     <div formGroupName="loginGroup"
          class="form-box">
-      <md-input-container>
+      <md-input-container class="form-field">
         <input mdInput
                formControlName="login"
                placeholder="Login">
+        <md-hint *ngIf="formModel.get(['loginGroup', 'login']).hasError('loginExists')"
+                 class="error-msg"
+                 align="end">This login is already been taken
+        </md-hint>
       </md-input-container>
-      <md-input-container>
+      <md-input-container class="form-field">
         <input mdInput
                formControlName="email"
                placeholder="Email">
+        <md-hint *ngIf="formModel.get(['loginGroup', 'email']).hasError('emailExists')"
+                 class="error-msg"
+                 align="end">User with this email already exists
+        </md-hint>
       </md-input-container>
     </div>
     <div formGroupName="passwordGroup"
          class="form-box">
-      <md-input-container>
+      <md-input-container class="form-field">
         <input mdInput
                formControlName="password"
                type="password"
                placeholder="Password">
       </md-input-container>
-      <md-input-container>
+      <md-input-container class="form-field">
         <input mdInput
                formControlName="passwordConfirm"
                type="password"
                placeholder="Confirm password">
+        <md-hint *ngIf="formModel.get('passwordGroup').hasError('passwordMismatch')"
+                 class="error-msg"
+                 align="end">Password doesn't match
+        </md-hint>
       </md-input-container>
     </div>
     <div class="form-box">
@@ -49,10 +62,9 @@
               type="submit"
               class="register-submit"
               [disabled]="formModel.invalid || isRegisterProceeding">
-        Login
+        Sign up
       </button>
-      <button (click)="onRegisterBtnPress()"
-              md-button
+      <button md-button
               color="primary"
               type="reset"
               class="register-reset"

@@ -1,7 +1,10 @@
 <md-list>
-  <md-list-item *ngFor="let item of searchItems"
+  <md-list-item *ngFor="let item of searchItems; index as i"
                 (click)="onSearchItemPress(item)"
-                class="search-menu-item">
+                [ngClass]="{
+                  active: i === activeMenuItem,
+                  'search-menu-item': true
+                }">
     <i [ngClass]="[item.icon, 'fa']" aria-hidden="true"></i>
     <span class="item-title">{{item.name}}</span>
   </md-list-item>

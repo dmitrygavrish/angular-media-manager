@@ -4,6 +4,7 @@ $foreground: #7a7a7a;
 $background: #ffffff;
 $primary_light: #ebe6f6;
 $mask: #3f3f3f;
+$warn: #f44336;
 
 @mixin abs-center() {
   position: absolute;
@@ -22,4 +23,19 @@ $mask: #3f3f3f;
   border-radius: .25rem;
   box-shadow: 0 0 5px 1px $mask;
   padding: 1rem;
+}
+
+@mixin scrollbar() {
+  &::-webkit-scrollbar-track {
+    background-color: #f8f8f8;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f8f8f8;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary_light;
+  }
 }

@@ -30,6 +30,17 @@ export class LocalService {
     return this._verifyAuthRegData(regData);
   }
   
+  public confirmUserData(field: 'login' | 'email', value: string): Observable<boolean> {
+    if (localStorage.accounts) {
+      const accounts: AccountData[] = JSON.parse(localStorage.accounts);
+      const isTaken: boolean = accounts.some((account: AccountData) => account[field] === value);
+      
+      return Observable.of(!isTaken).delay(this._delayTime);
+    }
+    
+    return Observable.of(true).delay(this._delayTime);
+  }
+  
   private _verifyAuthLoginData(loginData: AuthLoginData): Observable<boolean> {
     if (localStorage.accounts) {
       const accounts: AccountData[] = JSON.parse(localStorage.accounts);
@@ -46,10 +57,18 @@ export class LocalService {
   
   private _verifyAuthRegData(regData: AuthRegData): Observable<boolean> {
     if (!localStorage.accounts) {
-      localStorage.accounts = [];
+      localStorage.accounts = JSON.stringify([]);
     }
     
-    localStorage.push({
+    let accounts: AccountData[];
+  
+    try {
+      accounts = JSON.parse(localStorage.accounts);
+    } catch (err) {
+      accounts = [];
+    }
+    
+    accounts.push({
       login: regData.loginGroup.login,
       email: regData.loginGroup.email,
       password: regData.passwordGroup.password,
@@ -59,6 +78,8 @@ export class LocalService {
       }
     });
     
-    return Observable.of(true);
+    localStorage.accounts = JSON.stringify(accounts);
+    
+    return Observable.of(true).delay(this._delayTime);
   }
 }

@@ -1,3 +1,6 @@
 <div class="detail-wrapper">
-  detail works!!!!!!
+  <mm-detail-place *ngIf="params.type === 'search'"
+                   [currentContent]="params.key"></mm-detail-place>
+  <mm-favorite-place *ngIf="params.type === 'favorite'"
+                     [currentContent]="params.key"></mm-favorite-place>
 </div>

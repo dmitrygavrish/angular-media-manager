@@ -10,7 +10,12 @@ type AuthLoginData = {
 
 type AccountData = {
   login: string,
-  password: string
+  email: string,
+  password: string,
+  personal: {
+    firstName: string,
+    secondName: string
+  }
 };
 
 type AuthRegData = {

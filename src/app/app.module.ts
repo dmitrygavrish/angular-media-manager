@@ -27,6 +27,10 @@ import {FavoritesService} from './common/services/favorites.service';
 import {BASE_URL, BASE_URL_TOKEN} from '../config';
 import {ModalComponent} from './common/components/modal/modal.component';
 import {ModalService} from './common/components/modal/modal.service';
+import {RegService} from './common/services/reg.service';
+import { CloseButtonComponent } from './common/components/modal/close-button/close-button.component';
+import { DetailPlaceComponent } from './main/desk/detail/detail-place/detail-place.component';
+import { FavoritePlaceComponent } from './main/desk/detail/favorite-place/favorite-place.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,10 @@ import {ModalService} from './common/components/modal/modal.service';
     SearchComponent,
     FavoriteComponent,
     FavoriteListComponent,
-    ModalComponent
+    ModalComponent,
+    CloseButtonComponent,
+    DetailPlaceComponent,
+    FavoritePlaceComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,8 @@ import {ModalService} from './common/components/modal/modal.service';
     LocalService,
     SearchService,
     FavoritesService,
-    ModalService
+    ModalService,
+    RegService
   ],
   entryComponents: [RegisterComponent],
   bootstrap: [AppComponent]

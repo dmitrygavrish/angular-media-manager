@@ -20,3 +20,8 @@ type FavoriteItem = {
   key: string,
   icon?: string
 };
+
+type AppRouteParams = {
+  type: 'search' | 'favorite',
+  key: string
+};

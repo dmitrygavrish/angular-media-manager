@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RegService} from '../../common/services/reg.service';
 import {MdSnackBar} from '@angular/material';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
+import {ModalService} from '../../common/components/modal/modal.service';
 
 @Component({
   selector: 'mm-register',
@@ -14,6 +17,7 @@ export class RegisterComponent implements OnInit {
   
   public constructor(private _fb: FormBuilder,
                      private _regService: RegService,
+                     private _modalService: ModalService,
                      private _snackBar: MdSnackBar) {
   }
   
@@ -24,12 +28,14 @@ export class RegisterComponent implements OnInit {
         secondName: ['', [Validators.required]]
       }),
       loginGroup: this._fb.group({
-        login: ['', [Validators.required, Validators.minLength(4)]],
-        email: ['', [Validators.required, Validators.email]]
+        login: ['', [Validators.required, Validators.minLength(4)], this._loginValidator.bind(this)],
+        email: ['', [Validators.required, Validators.email], this._emailValidator.bind(this)]
       }),
       passwordGroup: this._fb.group({
         password: ['', [Validators.required, Validators.minLength(8)]],
         passwordConfirm: ['', [Validators.required, Validators.minLength(8)]]
+      }, {
+        validator: this._passwordMatchValidator.bind(this)
       })
     });
     
@@ -54,6 +60,7 @@ export class RegisterComponent implements OnInit {
       
       if (isConfirmed) {
         this.formModel.reset();
+        this._modalService.close();
       }
       
       this._showMessage(msg);
@@ -65,5 +72,42 @@ export class RegisterComponent implements OnInit {
     const duration: number = 3000;
     
     this._snackBar.open(text, '', {duration});
+  }
+  
+  private _passwordMatchValidator({value}: FormGroup): { [key: string]: boolean } {
+    const isValid: boolean = value.password === value.passwordConfirm;
+    
+    return isValid ? null : {passwordMismatch: true};
+  }
+  
+  private _regAsyncValidator(
+    regServiceMethod: string,
+    errorName: string
+  ): (control: FormControl) => Observable<{ [key: string]: boolean }> {
+    return (control: FormControl) =>
+      this._regService[regServiceMethod](control.value).map((isConfirmed: boolean) =>
+         isConfirmed ? null : {[errorName]: true}
+      );
+  }
+  
+  private _loginValidator(control: FormControl): Observable<{ [key: string]: boolean }> {
+    // force submit/reset buttons disabling due to async validators behaviour:
+    // it makes form valid until it gets response
+    this.isRegisterProceeding = true;
+    
+    return this._regAsyncValidator('validateLogin', 'loginExists')(control)
+      .do(() => {
+        this.isRegisterProceeding = false;
+      });
+  }
+  
+  private _emailValidator(control: FormControl): Observable<{ [key: string]: boolean }> {
+    // same as in _loginValidator here
+    this.isRegisterProceeding = true;
+    
+    return this._regAsyncValidator('validateEmail', 'emailExists')(control)
+      .do(() => {
+        this.isRegisterProceeding = false;
+      });
   }
 }

@@ -6,7 +6,8 @@ import {LocalService} from './local.service';
 
 @Injectable()
 export class AuthService {
-  private _authState: AuthState = {isLoggedIn: false};
+  // private _authState: AuthState = {isLoggedIn: false};
+  private _authState: AuthState = {isLoggedIn: true, userLogin: 'johndoe'};
   private _authState$$: Subject<AuthState> = new Subject();
 
   public constructor(private _mainService: LocalService) {
