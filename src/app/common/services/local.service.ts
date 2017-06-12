@@ -1,15 +1,18 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
+import {URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
 import {HttpService} from './http.service';
+import {BASE_URL_TOKEN} from '../../../config';
 
 @Injectable()
 export class LocalService {
   private _delayTime: number = 1000;
   
-  public constructor(_http: HttpService) {
+  public constructor(private _http: HttpService,
+                     @Inject(BASE_URL_TOKEN) private _baseUrl: string) {
   }
 
   public processLogin(loginData: AuthLoginData): Observable<AuthState> {
@@ -39,6 +42,17 @@ export class LocalService {
     }
     
     return Observable.of(true).delay(this._delayTime);
+  }
+  
+  public processSearchRequest(query: string, entity: string, attributes: string[]): Observable<SearchResponse> {
+    const url: string = `${this._baseUrl}/search`;
+    const search: URLSearchParams = new URLSearchParams();
+  
+    search.set('term', query);
+    search.set('media', entity);
+    search.set('attribute', attributes.toString());
+  
+    return this._http.get<SearchResponse>(url, {params: search});
   }
   
   private _verifyAuthLoginData(loginData: AuthLoginData): Observable<boolean> {

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {searchItems} from '../../search-items';
 import {Router} from '@angular/router';
 
@@ -7,7 +7,9 @@ import {Router} from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent {
+export class SearchComponent implements OnChanges {
+  @Input('params')
+  public params: AppRouteParams;
   public searchItems: SearchItem[] = searchItems;
   public activeMenuItem: number = 0;
   
@@ -21,5 +23,17 @@ export class SearchComponent {
       this.activeMenuItem = this.searchItems.indexOf(item);
       this._router.navigate(['app', {type: 'search', key: item.key}]);
     }
+  }
+  
+  public ngOnChanges(): void {
+    this._applyActiveItemChanges();
+  }
+  
+  private _applyActiveItemChanges(): void {
+    if (this.params.type === 'favorite') {
+      this.activeMenuItem = -1;
+    }
+  
+    this.activeMenuItem = this.searchItems.findIndex((item: SearchItem) => item.key === this.params.key);
   }
 }

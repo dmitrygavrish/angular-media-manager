@@ -21,7 +21,28 @@ type FavoriteItem = {
   icon?: string
 };
 
+type FavoritesMetadata = {
+  type: 'collection' | 'album', // FavoriteItem key
+  ids: number[]
+};
+
 type AppRouteParams = {
   type: 'search' | 'favorite',
-  key: string
+  key?: string,
+  id?: string
+};
+
+type SearchResponse = {
+  resultsCount: number,
+  results: SearchResult[]
+};
+
+type SearchResult = {
+  kind: string, // song, video...
+  trackId: number, // each single item id
+  trackName: string, // each single item name (title)
+  artistName: string,
+  collectionName: string,
+  artworkUrl100: string, // image
+  releaseDate: string
 };

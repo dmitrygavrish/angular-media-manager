@@ -18,6 +18,11 @@ type AccountData = {
   }
 };
 
+type UserFavorites = {
+  login: string, // as identifier
+  favorites: FavoritesMetadata[]
+};
+
 type AuthRegData = {
   nameGroup: {
     firstName: string,

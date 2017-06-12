@@ -1,16 +1,16 @@
-<md-tab-group>
+<md-tab-group [selectedIndex]="activeTabIndex">
   <md-tab>
     <ng-template md-tab-label>
       <i class="fa fa-search" aria-hidden="true"></i>
       <span class="tab-label">Search</span>
     </ng-template>
-    <mm-search></mm-search>
+    <mm-search [params]="params"></mm-search>
   </md-tab>
   <md-tab>
     <ng-template md-tab-label>
       <i class="fa fa-star" aria-hidden="true"></i>
       <span class="tab-label">Favorites</span>
     </ng-template>
-    <mm-favorite></mm-favorite>
+    <mm-favorite [params]="params"></mm-favorite>
   </md-tab>
 </md-tab-group>

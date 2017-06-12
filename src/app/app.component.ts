@@ -8,12 +8,12 @@ import {AuthService} from './common/services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public constructor(private router: Router,
-                     private authService: AuthService) {
-    this.authService.authState$.subscribe((authState: AuthState) => {
+  public constructor(private _router: Router,
+                     private _authService: AuthService) {
+    this._authService.authState$.subscribe((authState: AuthState) => {
       const navigateTo: string = authState.isLoggedIn ? 'app' : 'login';
       
-      this.router.navigate([navigateTo]);
+      this._router.navigate([navigateTo]);
     });
   }
 }

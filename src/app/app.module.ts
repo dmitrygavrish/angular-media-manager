@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from './material/material.module';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {BaseRequestOptions, HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {routes} from './common/routes';
 
@@ -28,9 +28,10 @@ import {BASE_URL, BASE_URL_TOKEN} from '../config';
 import {ModalComponent} from './common/components/modal/modal.component';
 import {ModalService} from './common/components/modal/modal.service';
 import {RegService} from './common/services/reg.service';
-import { CloseButtonComponent } from './common/components/modal/close-button/close-button.component';
-import { DetailPlaceComponent } from './main/desk/detail/detail-place/detail-place.component';
-import { FavoritePlaceComponent } from './main/desk/detail/favorite-place/favorite-place.component';
+import {CloseButtonComponent} from './common/components/modal/close-button/close-button.component';
+import {DetailPlaceComponent} from './main/desk/detail/detail-place/detail-place.component';
+import {FavoritePlaceComponent} from './main/desk/detail/favorite-place/favorite-place.component';
+import { CardComponent } from './main/desk/detail/card/card.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { FavoritePlaceComponent } from './main/desk/detail/favorite-place/favori
     ModalComponent,
     CloseButtonComponent,
     DetailPlaceComponent,
-    FavoritePlaceComponent
+    FavoritePlaceComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { FavoritePlaceComponent } from './main/desk/detail/favorite-place/favori
     SearchService,
     FavoritesService,
     ModalService,
-    RegService
+    RegService,
+    BaseRequestOptions
   ],
   entryComponents: [RegisterComponent],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {searchItems} from '../../search-items';
 import {favoriteItems} from '../../favorite-items';
 
@@ -8,6 +8,8 @@ import {favoriteItems} from '../../favorite-items';
   styleUrls: ['./favorite.component.scss']
 })
 export class FavoriteComponent {
+  @Input('params')
+  public params: AppRouteParams;
   public searchItems: SearchItem[] = searchItems;
   public favoriteItems: FavoriteItem[] = favoriteItems;
   public selectedCategories: string[];

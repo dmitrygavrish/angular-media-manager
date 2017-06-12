@@ -2,7 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MdButtonModule,
+  MdButtonModule, MdCardModule,
+  MdCheckboxModule,
   MdInputModule,
   MdListModule,
   MdSelectModule,
@@ -21,7 +22,9 @@ import {
     MdListModule,
     MdInputModule,
     MdSelectModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdCheckboxModule,
+    MdCardModule
   ],
   exports: [
     MdButtonModule,
@@ -30,7 +33,9 @@ import {
     MdListModule,
     MdInputModule,
     MdSelectModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdCheckboxModule,
+    MdCardModule
   ],
   declarations: []
 })

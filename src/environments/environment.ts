@@ -5,5 +5,5 @@
 
 export const environment: env = {
   production: false,
-  baseAPIUrl: 'https://content.googleapis.com/youtube/v3'
+  baseAPIUrl: 'https://itunes.apple.com'
 };

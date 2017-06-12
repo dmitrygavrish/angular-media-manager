@@ -1,0 +1,11 @@
+@import "../../../../common/common";
+
+:host {
+
+  .card-image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

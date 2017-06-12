@@ -1,3 +1,19 @@
-<p>
-  detail-place works!
-</p>
+<div class="toolbar">
+  <md-input-container class="search-media">
+    <input (input)="onSearchInputChange($event.target?.value)"
+           mdInput
+           [placeholder]="searchPlaceholder">
+  </md-input-container>
+  <div class="attributes-container">
+    <md-checkbox *ngFor="let attr of searchAttributes"
+                 [(ngModel)]="attr.isApplied"
+                 class="search-attribute">
+      {{attr.data.name}}
+    </md-checkbox>
+  </div>
+</div>
+<div class="search-results">
+  <mm-card *ngFor="let result of searchResults | async"
+           [cardData]="result"
+            class="search-results-card"></mm-card>
+</div>
