@@ -86,7 +86,7 @@ export class LocalService {
     
     localStorage.favorites = JSON.stringify(favorites);
     
-    return Observable.of(userFavorites.favorites);
+    return Observable.of(userFavorites ? userFavorites.favorites : []);
   }
   
   public uploadFavoritesContent(login: string,
