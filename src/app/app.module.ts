@@ -32,6 +32,10 @@ import {CloseButtonComponent} from './common/components/modal/close-button/close
 import {DetailPlaceComponent} from './main/desk/detail/detail-place/detail-place.component';
 import {FavoritePlaceComponent} from './main/desk/detail/favorite-place/favorite-place.component';
 import { CardComponent } from './main/desk/detail/card/card.component';
+import { FavoriteCreateComponent } from './main/desk/favorite-create/favorite-create.component';
+import { FavoriteEditComponent } from './main/desk/favorite-edit/favorite-edit.component';
+import { ConfirmActionComponent } from './common/components/confirm-action/confirm-action.component';
+import { FavoriteChooseComponent } from './main/desk/favorite-choose/favorite-choose.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,11 @@ import { CardComponent } from './main/desk/detail/card/card.component';
     CloseButtonComponent,
     DetailPlaceComponent,
     FavoritePlaceComponent,
-    CardComponent
+    CardComponent,
+    FavoriteCreateComponent,
+    FavoriteEditComponent,
+    ConfirmActionComponent,
+    FavoriteChooseComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +84,12 @@ import { CardComponent } from './main/desk/detail/card/card.component';
     RegService,
     BaseRequestOptions
   ],
-  entryComponents: [RegisterComponent],
+  entryComponents: [
+    RegisterComponent,
+    FavoriteCreateComponent,
+    FavoriteEditComponent,
+    FavoriteChooseComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,3 +1,5 @@
-<p>
-  favorite-place works!
-</p>
+<div class="favorites-content">
+  <mm-card *ngFor="let item of favoriteMediaItems | async"
+           [cardData]="item"
+           class="favorites-card"></mm-card>
+</div>

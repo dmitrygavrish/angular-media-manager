@@ -44,3 +44,7 @@ app-root {
 .mat-placeholder-required {
   display: none;
 }
+/* TODO temporarily leave this workaround, make Card component know what to display from modal context */
+.favorites-card .mat-mini-fab {
+  display: none;
+}

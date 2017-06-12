@@ -22,8 +22,11 @@ type FavoriteItem = {
 };
 
 type FavoritesMetadata = {
+  id?: number,
+  title: string,
+  category: string, // SearchItem key
   type: 'collection' | 'album', // FavoriteItem key
-  ids: number[]
+  contentIds?: number[]
 };
 
 type AppRouteParams = {
@@ -44,5 +47,6 @@ type SearchResult = {
   artistName: string,
   collectionName: string,
   artworkUrl100: string, // image
-  releaseDate: string
+  releaseDate: string,
+  trackViewUrl: string // link to itunes page
 };

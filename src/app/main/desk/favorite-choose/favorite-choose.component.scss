@@ -1,0 +1,24 @@
+@import '../../../common/common';
+
+:host {
+  @include modal(20rem, 30rem);
+
+  .favorite-list {
+
+    .favorite-list-item {
+      padding: .25rem 0;
+      cursor: pointer;
+      transition: background-color .2s;
+
+      &:hover {
+        background-color: $primary_light;
+      }
+
+      .favorite-name {
+        flex: 1 1 auto;
+        color: $primary;
+        font-size: .875rem;
+      }
+    }
+  }
+}

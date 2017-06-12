@@ -3,9 +3,41 @@
 :host {
 
   .card-image {
+    position: relative;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
+    overflow: hidden;
+
+    .mat-card-image {
+      @include abs-center();
+      z-index: 1;
+    }
+  }
+
+  .mat-card-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .mat-card-header {
+    height: 6rem;
+  }
+
+  .mat-card-subtitle {
+    width: 9rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .card-text {
+    height: 1rem;
+    font-size: 0.875rem;
+    color: $foreground;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
   }
 }

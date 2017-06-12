@@ -1,0 +1,8 @@
+<mm-close-button></mm-close-button>
+<md-list class="favorite-list">
+  <md-list-item *ngFor="let item of favoritesItems"
+                (click)="onListItemPress(item)"
+                class="favorite-list-item">
+    <span class="favorite-name">{{item.title}}</span>
+  </md-list-item>
+</md-list>

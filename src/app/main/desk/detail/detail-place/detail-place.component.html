@@ -1,12 +1,14 @@
 <div class="toolbar">
   <md-input-container class="search-media">
     <input (input)="onSearchInputChange($event.target?.value)"
+           #searchInput
            mdInput
            [placeholder]="searchPlaceholder">
   </md-input-container>
   <div class="attributes-container">
     <md-checkbox *ngFor="let attr of searchAttributes"
                  [(ngModel)]="attr.isApplied"
+                 (change)="onAttributeCheckboxChange(searchInput.value)"
                  class="search-attribute">
       {{attr.data.name}}
     </md-checkbox>

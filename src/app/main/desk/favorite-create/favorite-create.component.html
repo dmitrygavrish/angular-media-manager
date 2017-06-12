@@ -1,0 +1,35 @@
+<mm-close-button></mm-close-button>
+<div class="favorite-create-container">
+  <form [formGroup]="formModel"
+        novalidate
+        (ngSubmit)="onSubmit(formModel.value)">
+    <md-input-container class="favorite-title">
+      <input mdInput
+             formControlName="title"
+             placeholder="Enter title">
+    </md-input-container>
+    <md-select class="favorite-categories"
+               formControlName="category"
+               placeholder="Select category">
+      <md-option *ngFor="let sItem of searchItems"
+                 [value]="sItem.key">
+        {{sItem.name}}
+      </md-option>
+    </md-select>
+    <md-select class="favorite-types"
+               formControlName="type"
+               placeholder="Select type">
+      <md-option *ngFor="let fItem of favoriteItems"
+                 [value]="fItem.key">
+        {{fItem.name}}
+      </md-option>
+    </md-select>
+    <button md-raised-button
+            color="accent"
+            type="submit"
+            class="favorite-create-submit"
+            [disabled]="formModel.invalid || isCreateProceeding">
+      Create
+    </button>
+  </form>
+</div>

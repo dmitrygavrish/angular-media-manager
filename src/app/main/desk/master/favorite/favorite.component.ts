@@ -1,6 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {searchItems} from '../../search-items';
 import {favoriteItems} from '../../favorite-items';
+import {ModalService} from '../../../../common/components/modal/modal.service';
+import {FavoriteCreateComponent} from '../../favorite-create/favorite-create.component';
 
 @Component({
   selector: 'mm-favorite',
@@ -15,6 +17,9 @@ export class FavoriteComponent {
   public selectedCategories: string[];
   public selectedType: string;
   
+  public constructor(private _modalService: ModalService) {
+  }
+  
   public onCategorySelectionChange(value: string[]): void {
     this.selectedCategories = value;
   }
@@ -24,6 +29,8 @@ export class FavoriteComponent {
   }
   
   public onAddFavoritePress(): void {
-  
+    this._modalService.open({
+      component: FavoriteCreateComponent
+    });
   }
 }

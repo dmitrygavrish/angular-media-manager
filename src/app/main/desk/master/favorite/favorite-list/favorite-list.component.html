@@ -1,44 +1,18 @@
 <md-list class="favorite-list">
-  <md-list-item class="favorite-list-item">
-    <i class="fa fa-music category-icon" aria-hidden="true"></i>
-    <i class="fa fa-clone type-icon" aria-hidden="true"></i>
-    <span class="favorite-name">Top-10</span>
-    <button md-button
+  <md-list-item *ngFor="let item of itemsData"
+                (click)="onListItemPress(item.data)"
+                class="favorite-list-item">
+    <i [ngClass]="['fa', 'category-icon', item.iconCategory]" aria-hidden="true"></i>
+    <i [ngClass]="['fa', 'type-icon', item.iconType]" aria-hidden="true"></i>
+    <span class="favorite-name">{{item.data.title}}</span>
+    <button (click)="onEditBtnPress(item.data)"
+            md-button
             color="primary"
             class="item-edit-btn">
       <i class="fa fa-pencil" aria-hidden="true"></i>
     </button>
-    <button md-button
-            color="warn"
-            class="item-delete-btn">
-      <i class="fa fa-times" aria-hidden="true"></i>
-    </button>
-  </md-list-item>
-  <md-list-item class="favorite-list-item">
-    <i class="fa fa-cubes category-icon" aria-hidden="true"></i>
-    <i class="fa fa-picture-o type-icon" aria-hidden="true"></i>
-    <span class="favorite-name">Pirates of the Caribbean</span>
-    <button md-button
-            color="primary"
-            class="item-edit-btn">
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-    </button>
-    <button md-button
-            color="warn"
-            class="item-delete-btn">
-      <i class="fa fa-times" aria-hidden="true"></i>
-    </button>
-  </md-list-item>
-  <md-list-item *ngFor="let i of [1,1,1,1,1,1,1,1,1,1,1,11,1,1]" class="favorite-list-item">
-    <i class="fa fa-cubes category-icon" aria-hidden="true"></i>
-    <i class="fa fa-picture-o type-icon" aria-hidden="true"></i>
-    <span class="favorite-name">Pirates of the Caribbean</span>
-    <button md-button
-            color="primary"
-            class="item-edit-btn">
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-    </button>
-    <button md-button
+    <button (click)="onDeleteBtnPress(item.data)"
+            md-button
             color="warn"
             class="item-delete-btn">
       <i class="fa fa-times" aria-hidden="true"></i>

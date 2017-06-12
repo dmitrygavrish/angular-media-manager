@@ -1,0 +1,25 @@
+@import '../../../common/common';
+
+:host {
+  @include modal(20rem, 15rem);
+
+  .favorite-create-container, form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    form {
+      align-items: center;
+      justify-content: space-between;
+
+      .favorite-title {
+        width: 100%;
+      }
+
+      .favorite-categories, .favorite-types {
+        width: 100%;
+      }
+    }
+  }
+}

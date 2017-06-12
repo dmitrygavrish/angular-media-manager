@@ -33,6 +33,10 @@ export class AuthService {
   public get isLoggedIn(): boolean {
     return this._authState.isLoggedIn;
   }
+  
+  public get userLogin(): string {
+    return this._authState.userLogin;
+  }
 
   public get authState$(): Observable<AuthState> {
     return this._authState$$.asObservable();

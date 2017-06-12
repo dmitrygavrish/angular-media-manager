@@ -1,0 +1,16 @@
+@import '../../../../common/common';
+
+.favorites-content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  @include scrollbar();
+
+  .favorites-card {
+    width: 15.75rem;
+    height: 15rem;
+    margin: 1rem;
+  }
+}

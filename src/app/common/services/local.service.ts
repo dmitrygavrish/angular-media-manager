@@ -55,6 +55,75 @@ export class LocalService {
     return this._http.get<SearchResponse>(url, {params: search});
   }
   
+  public uploadFavoritesMetadata(login: string, favData?: FavoritesMetadata): Observable<FavoritesMetadata[]> {
+    if (!localStorage.favorites) {
+      localStorage.favorites = JSON.stringify([]);
+    }
+  
+    let favorites: UserFavorites[];
+  
+    try {
+      favorites = JSON.parse(localStorage.favorites);
+    } catch (err) {
+      favorites = [];
+    }
+    
+    let userFavorites: UserFavorites = favorites.find((userFav: UserFavorites) => userFav.login === login);
+    
+    if (favData && userFavorites && userFavorites.favorites) {
+      favData.id = userFavorites.favorites.length;
+      
+      userFavorites.favorites.push(favData);
+    } else if (favData) {
+      favData.id = 0;
+      userFavorites = {
+        login,
+        favorites: [favData]
+      };
+      
+      favorites.push(userFavorites);
+    }
+    
+    localStorage.favorites = JSON.stringify(favorites);
+    
+    return Observable.of(userFavorites.favorites);
+  }
+  
+  public uploadFavoritesContent(login: string,
+                                favData: FavoritesMetadata,
+                                mediaData: SearchResult): Observable<FavoritesMetadata[]> {
+    const favorites: UserFavorites[] = JSON.parse(localStorage.favorites);
+    const userFavorites: UserFavorites = favorites
+      .find((userFav: UserFavorites) => userFav.login === login);
+    const favoritesMetadata: FavoritesMetadata = userFavorites.favorites
+      .find((fData: FavoritesMetadata) => fData.id === favData.id);
+    
+    favoritesMetadata.contentIds = favoritesMetadata.contentIds || [];
+    
+    if (!favoritesMetadata.contentIds.some((id: number) => id === mediaData.trackId)) {
+      favoritesMetadata.contentIds.push(mediaData.trackId);
+    }
+  
+    localStorage.favorites = JSON.stringify(favorites);
+  
+    return Observable.of(userFavorites.favorites);
+  }
+  
+  public loadFavoritesContent(login: string, favoritesId: number | string): Observable<SearchResult[]> {
+    const favorites: UserFavorites[] = JSON.parse(localStorage.favorites);
+    const userFavorites: UserFavorites = favorites
+      .find((userFav: UserFavorites) => userFav.login === login);
+    const favoritesMetadata: FavoritesMetadata = userFavorites.favorites
+      .find((fData: FavoritesMetadata) => Number(fData.id) === Number(favoritesId));
+  
+    const url: string = `${this._baseUrl}/lookup`;
+    const search: URLSearchParams = new URLSearchParams();
+    
+    search.set('id', favoritesMetadata.contentIds.toString());
+  
+    return this._http.get<SearchResponse>(url, {params: search}).map((res: SearchResponse) => res.results);
+  }
+  
   private _verifyAuthLoginData(loginData: AuthLoginData): Observable<boolean> {
     if (localStorage.accounts) {
       const accounts: AccountData[] = JSON.parse(localStorage.accounts);

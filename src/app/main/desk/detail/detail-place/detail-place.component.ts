@@ -27,7 +27,7 @@ export class DetailPlaceComponent implements OnInit, OnChanges {
   public ngOnInit(): void {
     this._searchInput$$
       .debounceTime(450)
-      // .distinctUntilChanged() // probably bad UX in this app usage scenarios
+      .distinctUntilChanged()
       .subscribe((value: string) => {
         this._search(value);
       });
@@ -41,6 +41,10 @@ export class DetailPlaceComponent implements OnInit, OnChanges {
   
   public onSearchInputChange(value: string): void {
     this._searchInput$$.next(value);
+  }
+  
+  public onAttributeCheckboxChange(value: string): void {
+    this._search(value);
   }
   
   private _search(value: string): void {
